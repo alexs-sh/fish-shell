@@ -71,10 +71,8 @@ fn main() {
 
     cc::Build::new().file("src/libc.c").compile("flibc.a");
 
-    let mut build = cc::Build::new();
+    let build = cc::Build::new();
     // Add to the default library search path
-    build.flag_if_supported("-L/usr/local/lib/");
-    rsconf::add_library_search_path("/usr/local/lib");
     let mut target = Target::new_from(build).unwrap();
     // Keep verbose mode on until we've ironed out rust build script stuff
     target.set_verbose(true);
